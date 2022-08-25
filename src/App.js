@@ -11,15 +11,15 @@ import EditContact from "./component/contacts/editContact/EditContact";
 function App() {
   return (
     <div className="App">
-      <h1>hello</h1>
-        <Navbar />  
+      
+         <Navbar />  
        <Routes>
-        {/* <Route path = "/" element = { <Navigate to ={"/contact/list"} />} /> */}
-        <Route path ="contacts/list" element= {<ContactList/>} />
-        <Route path ="/contacts/add" element= {<AddContact />} />
-        <Route path ="/contacts/view:contactId" element= {<ViewContact/>} />
-        <Route path ="/contacts/edit:contactId" element= {<EditContact/>} />
-      </Routes>
+        <Route path = {"/"} element = { <Navigate to ={"/contacts/list"} />} />
+        <Route path = {"/contacts/list"} element= {<ContactList/>} />
+        <Route path = {"/contacts/add"} element= {<AddContact />} />
+        <Route path = {"/contacts/view/:contactId"} element= {<ViewContact/>} />
+        <Route path = {"/contacts/edit/:contactId"} element= {<EditContact/>} />
+      </Routes> 
 
     </div>
   );

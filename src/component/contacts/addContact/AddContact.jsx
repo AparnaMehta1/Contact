@@ -23,7 +23,7 @@ function AddContact() {
 
                   </div>
                   <div className="mb-2">
-                    <input type="number" className='form-control' placeholder='Mobile' />
+                    <input type="text" className='form-control' placeholder='Mobile' />
 
                   </div>
                   <div className="mb-2">

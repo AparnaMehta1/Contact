@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import {FaMobileAlt} from "react-icons/fa";
 
 function Navbar() {
@@ -6,8 +7,8 @@ function Navbar() {
     <div>
         <nav className='navbar navbar-dark bg-dark navbar-expand-sm'>
             <div className='contanier'>
-                <link to={"/"} className="navbar-brand">
-                    <FaMobileAlt/>Contact <span className='text-warning'>Managerv</span> </link>
+                <Link to={"/"} className="navbar-brand">
+                    <FaMobileAlt className='m-3 ' />Contact <span className='text-warning'>Manager</span> </Link>
             </div>
 
         </nav>

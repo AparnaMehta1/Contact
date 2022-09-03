@@ -1,16 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { FaEye, FaPencilAlt, FaTrashAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import AddContact from './contacts/addContact/AddContact';
 
 
-const Card = ({cont , handleDelete}) => {
-    
+const Card = ({cont,data ,setData }) => {
+const params = useParams();
+const {contactName, contactId} = params
+ const deleteContact = (i) =>{
+     
+      const FilteredData = data.filter(x=>{
+        return x.id !== cont.id;
+      })
+      setData(FilteredData);
+      console.log(FilteredData);
+      
+ 
+    }
   return (
     <div className='row'>            
     <div className="col-md-6">
     <div className="card">
       <div className="card-body">
-        <div className="row align-items-center d-flex justify-content-arround ">
+       <div className="row align-items-center d-flex justify-content-arround ">
           <div className="col-md-4">
             <img
               className="contact-img"
@@ -22,10 +34,10 @@ const Card = ({cont , handleDelete}) => {
           <div className="col-md-7">
             <ul className="list-group">
               <li className="list-group-item list-group-item-action">
-                Name: <span className="fw-bold">{cont.Name}</span>
+                Name: <span className="fw-bold">{cont.name}</span>
               </li>
               <li className="list-group-item list-group-item-action">
-                Mobile: <span className="fw-bold">{cont.phoneNumber}</span>
+                Mobile: <span className="fw-bold">{cont.number}</span>
               </li>
               <li className="list-group-item list-group-item-action">
                 Email:{" "}
@@ -36,10 +48,10 @@ const Card = ({cont , handleDelete}) => {
 
           <div className="col-md-1 align-items-center d-flex flex-column">
             <Link
-              to={"/contacts/view/:contactId"}
-              className="btn btn-warning my-1"
+              to={`/contacts-view/${cont.name}/${cont.id}`}
+             
             >
-              <FaEye />
+              <FaEye  className="btn btn-warning my-1" />
             </Link>
             <Link
               to={"/contacts/edit/:contactId"}
@@ -47,14 +59,18 @@ const Card = ({cont , handleDelete}) => {
             >
               <FaPencilAlt />
             </Link>
-            <button className="btn btn-danger my-1" onClick={handleDelete}>
+            <button className="btn btn-danger my-1"
+            onClick={() => deleteContact (cont.id)
+          } >
               <FaTrashAlt /> 
             </button>
           </div>
-        </div>
+        </div> 
       </div>
     </div>
-  </div></div>
+  </div>
+ 
+  </div>
   )
 }
 

@@ -1,7 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function EditContact() {
+  const params = useParams();
+  const [contactId] = params;
+
   return (
     
     <div>
@@ -32,7 +35,7 @@ function EditContact() {
             <div className="col-md-8">
               <ul className="list-group">
                 <li className="list-group-item list-group-item-action">
-                  Name: <span className="fw-bold">Rajan</span>
+                  Name: <span className="fw-bold">{contactId}</span>
                 </li>
                 <li className="list-group-item list-group-item-action">
                   Mobile: <span className="fw-bold">5487555155</span>

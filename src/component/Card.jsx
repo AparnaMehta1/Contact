@@ -14,7 +14,7 @@ const {contactName, contactId} = params
       })
       setData(FilteredData);
       console.log(FilteredData);
-      
+      //abc 
  
     }
   return (
@@ -53,10 +53,12 @@ const {contactName, contactId} = params
             >
               <FaEye  className="btn btn-warning my-1" />
             </Link>
+            
             <Link
               to={"/contacts/edit/:contactId"}
               className="btn btn-primary my-1"
             >
+      
               <FaPencilAlt />
             </Link>
             <button className="btn btn-danger my-1"

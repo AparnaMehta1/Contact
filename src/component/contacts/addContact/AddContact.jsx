@@ -3,7 +3,7 @@ import { useState } from 'react';
 import {Button, Form, Modal} from "react-bootstrap"
 import {Link} from "react-router-dom";
 
-function AddContact({showModal , setShowModal, handleCreate , name , photo , email , number , company , title, setName , setEmail, setCompany , setPhoto , setNumber , setTitle, id , setId}) {
+function AddContact({showModal, setShowModal, handleCreate , name , photo , email , number , company , title, setName , setEmail, setCompany , setPhoto , setNumber , setTitle, id , setId}) {
 
   console.log(name);
 
@@ -70,16 +70,17 @@ function AddContact({showModal , setShowModal, handleCreate , name , photo , ema
    <Modal show={showModal} >
     <Modal.Header>
     <Modal.Title>
-    Add New Contacts
+    Add Contact
    </Modal.Title>
     </Modal.Header>
   
    <Modal.Body>
    <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email address</Form.Label>
+            <Form.Group className="mb-4" controlId="exampleForm.ControlInput1">
+              <Form.Label>Fill Details</Form.Label>
               <Form.Control
                 type="text"
+                name = "name"
                 placeholder="Name"
                 autoFocus
                 value= {name}
@@ -98,14 +99,17 @@ function AddContact({showModal , setShowModal, handleCreate , name , photo , ema
                 type="number"
                 placeholder="Number"
                 autoFocus
+                name = "number"
+
                 value= {number}
                 onChange = {(e)=>setNumber(e.target.value)}
                 required
               />
                <Form.Control
-                type="number"
+                type="text"
                 placeholder="UserId"
                 autoFocus
+                name = "id"
                 value= {id}
                 onChange = {(e)=>setId(e.target.value)}
                 required
@@ -114,11 +118,13 @@ function AddContact({showModal , setShowModal, handleCreate , name , photo , ema
                 type="email"
                 placeholder="Email"
                 autoFocus
+                name = "email"
                 value= {email}
                 onChange = {(e)=>setEmail(e.target.value)}
               />
               <Form.Control
                 type="text"
+                name = "company"
                 placeholder="Company"
                 autoFocus
                 value= {company}
@@ -129,6 +135,7 @@ function AddContact({showModal , setShowModal, handleCreate , name , photo , ema
                 type="text"
                 placeholder="Title"
                 autoFocus
+                name = "title"
                 value= {title}
                 onChange = {(e)=>setTitle(e.target.value)}
               />

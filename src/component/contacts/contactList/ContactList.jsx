@@ -6,17 +6,11 @@ import { Link } from "react-router-dom";
 import "../contactList/ContactList.css";
 import Card from "../../Card";
 import AddContact from "../addContact/AddContact";
+import EditContact from "../editContact/EditContact";
 
-function ContactList() {
- faker.seed(99)
-  const contactDetails = [...Array(20)].map(()=>({
-    id : faker.datatype.uuid(),
-    name: faker.name.fullName(),
-    number: faker.phone.number(),
-    email: faker.internet.email(),
-    image :faker.internet.avatar(),
-  }));
-  console.log(contactDetails)
+function ContactList({data, setData}) {
+
+  console.log(data)
   // const showUi = () =>{
   //   const list = localStorage.getItem('newData')
   //   if (list) {
@@ -25,8 +19,9 @@ function ContactList() {
   //       return [];
   //   }
   //  }
-  const [data , setData]= useState(contactDetails); 
+ 
   const [showModal ,  setShowModal] = useState(false);
+  const [showEditModal ,  setShowEditModal] = useState(false);
   const [name , setName ] = useState("");
   const [photo ,setPhoto] = useState ("");
   const [number , setNumber] = useState("");
@@ -36,26 +31,25 @@ function ContactList() {
   const [id, setId] = useState("");
   const [search , setSearch] = useState("");
    
-
+ 
 
  const handleCreate = () =>{
  
   const LoginData = {id, name , photo , email, number , company , title}
-  window.localStorge.setItem("LoginData",JSON.stringify(LoginData));
-  const newLoginData = window.localStorage.getItem('LoginData',JSON.stringify(LoginData));
 
-    const newData = [...data , newLoginData]
+
+    const newData = [...data , LoginData]
   setData(newData)
   
   setShowModal(false)
   console.log(newData);
 
-  localStorage.setItem("name",name)
-  localStorage.setItem("number",number)
-  localStorage.setItem("email",email)
-  localStorage.setItem("id",id)
-  localStorage.setItem("company", company)
-  localStorage.setItem("title",title)
+  // localStorage.setItem("name",name)
+  // localStorage.setItem("number",number)
+  // localStorage.setItem("email",email)
+  // localStorage.setItem("id",id)
+  // localStorage.setItem("company", company)
+  // localStorage.setItem("title",title)
  
  };
  
@@ -100,7 +94,18 @@ function ContactList() {
                     <FaPlusCircle className="me-2" /> New
                   {/* </Link> */}
                  </div>
+
+                 <EditContact
+                 
+                 showEditModal = {showEditModal}
+                 setShowEditModal = {setShowEditModal}
+                 
+                 /> 
+
+
                  <AddContact
+               
+                 
                  showModal = {showModal}
                  setShowModal = {setShowModal}
                   handleCreate = {handleCreate}
@@ -119,11 +124,8 @@ function ContactList() {
                  email = {email}
                  setEmail = {setEmail}
 
-
-
-
-                 
                  />
+                 
                  
                 </p>
                 <p className="fst-italic">
@@ -179,7 +181,8 @@ function ContactList() {
                 
               }).map((cont)=>{
                 return <Card  cont= {cont}
-                setShowModal = {setShowModal}
+                setShowEditModal = {setShowEditModal}
+                
                setData = {setData}
                 data ={data}/>
               })}
